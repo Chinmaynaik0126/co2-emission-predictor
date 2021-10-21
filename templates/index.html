@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>CO2 Predictor</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" type="text/css" href="style.css"> 
+  
+</head>
+
+<body>
+ <div class="login">
+     <h1>Mini Project</h1>
+	<h1>CO2 Emission Predictor</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="Engine_Capacity" placeholder="Engine Capacity" required="required" autocomplete="off" />
+        <select name="Type">
+            <option value="" disabled selected hidden style="color:blue;"> Select Car Type</option>
+            <option value=0>Electric + Diesel</option>
+            <option value=1>Electric + Petrol</option>
+            <option value=2>Diesel</option>
+            <option value=3>Petrol</option>
+          </select>
+        <input type="text" name="Mileage" placeholder="Mileage" required="required" autocomplete="off"/>
+
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+     <h3>{{ prediction_text }}</h3>
+
+ </div>
+
+
+</body>
+</html>
